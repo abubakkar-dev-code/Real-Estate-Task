@@ -4,7 +4,7 @@ const CTA = () => {
   return (
     <div className="w-full px-6 py-10 md:px-15">
       <div
-        className="rounded-3xl bg-cover bg-center bg-no-repeat min-h-[420px] md:h-[460px] flex items-center p-8 md:p-16 lg:p-20"
+        className="rounded-3xl bg-cover bg-center bg-no-repeat min-h-105 md:h-115 flex items-center p-8 md:p-16 lg:p-20"
         style={{
           backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 45%, rgba(0,0,0,0) 100%), url(${sunset})`,
         }}

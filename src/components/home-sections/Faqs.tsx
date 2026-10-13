@@ -74,6 +74,7 @@ const Faqs = () => {
               <div
                 key={item.idx}
                 className="bg-white py-8 px-6 shadow-md rounded-xl mt-5"
+                onClick={() => setOpenId(openId === item.idx ? null : item.idx)}
               >
                 <div className="flex justify-between items-center">
                   <div>{item.question}</div>
