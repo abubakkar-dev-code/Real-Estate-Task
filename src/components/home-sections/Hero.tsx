@@ -18,7 +18,7 @@ const Hero = () => {
           world's fastest-growing real estate markets.
         </p>
         <button className="px-8 w-fit py-5 rounded-3xl mt-7 bg-black text-white flex gap-8 items-center">
-          Explore Properties<span>---</span>
+          Explore Properties<span>→</span>
         </button>
       </div>
     </div>

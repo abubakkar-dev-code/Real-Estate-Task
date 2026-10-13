@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import dubaiImage from "../../assets/home-assets/AL-burjh.jpg";
 const WhyDubai = () => {
-  const [dubaiFeatures, setDubaiFeatures] = useState([
+  const [dubaiFeatures, _setDubaiFeatures] = useState([
     {
       idx: 1,
       name: "World-class lifestyle",
@@ -25,10 +25,10 @@ const WhyDubai = () => {
   ]);
   return (
     <div className="w-full px-6 py-10 md:px-15">
-      <div className="bg-white shadow-md rounded-3xl flex gap-12">
+      <div className="bg-white shadow-md rounded-xl flex gap-12">
         <div className="flex-[50%] ">
           <img
-            className="bg-cover bg-center w-full h-full rounded-l-3xl"
+            className="bg-cover bg-center w-full h-full rounded-l-xl"
             src={dubaiImage}
           />
         </div>
@@ -41,9 +41,12 @@ const WhyDubai = () => {
           </h3>
           <div>
             {dubaiFeatures.map((item) => (
-              <div key={item.idx} className="flex mt-14 items-center gap-14 border border-[#E8E2D8] px-2 py-2 rounded-lg">
+              <div
+                key={item.idx}
+                className="flex mt-14 items-center gap-14 border border-[#E8E2D8] px-2 py-2 rounded-lg"
+              >
                 <div className="border rounded-full w-20 h-20 flex items-center justify-center bg-[#F4ECE1]">
-                    icon
+                  icon
                 </div>
                 <div>
                   <h3>{item.name}</h3>

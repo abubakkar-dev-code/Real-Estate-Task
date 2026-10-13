@@ -1,5 +1,3 @@
-import React from "react";
-
 const OverView = () => {
   return (
     <section className="w-full py-10 px-6 md:px-15">

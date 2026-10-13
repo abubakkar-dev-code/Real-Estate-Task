@@ -33,7 +33,7 @@ const Ownership = () => {
     <div className="w-full py-10 px-6 md:px-15">
       <div
         style={{
-          backgroundImage:`linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(${OwnerShip})`,
+          backgroundImage:`linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(${OwnerShip})`,
         }}
         className="h-185 w-full bg-cover bg-center  rounded-3xl -z-10 flex flex-col gap-10 space-y-16 text-white items-center text-center  pt-30"
       >
