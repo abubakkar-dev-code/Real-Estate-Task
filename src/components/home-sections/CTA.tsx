@@ -1,10 +1,10 @@
-import sunset from "../../assets/home-assets/sun-set.png";
+import sunset from "../../assets/home-assets/sun-set.webp";
 
 const CTA = () => {
   return (
     <div className="w-full px-6 py-10 md:px-15">
       <div
-        className="rounded-3xl bg-cover bg-center bg-no-repeat min-h-105 md:h-115 flex items-center p-8 md:p-16 lg:p-20"
+        className="rounded-3xl bg-cover bg-center bg-no-repeat min-h-100 sm:min-h-105 md:h-115 flex items-center p-6 sm:p-10 md:p-16 lg:p-20"
         style={{
           backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 45%, rgba(0,0,0,0) 100%), url(${sunset})`,
         }}
@@ -14,7 +14,7 @@ const CTA = () => {
             YOUR NEXT CHAPTER
           </p>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-tight">
             Ready to invest in Dubai?
           </h2>
 
@@ -22,9 +22,9 @@ const CTA = () => {
             Get in touch with our team and take the first step towards owning
             your dream property.
           </p>
-          <button className="mt-4 px-7 py-3.5 bg-white text-neutral-900 rounded-full font-medium text-sm md:text-base flex items-center gap-3 w-fit shadow-md hover:bg-gray-100 transition cursor-pointer">
+          <button className="group mt-2 md:mt-4 px-6 md:px-7 py-3 md:py-3.5 bg-white text-neutral-900 rounded-full font-medium text-sm md:text-base flex items-center gap-3 w-fit shadow-md hover:bg-gray-100 active:scale-95 transition cursor-pointer">
             Contact Us
-            <span className="text-lg">→</span>
+            <span className="inline-block text-lg transition-transform duration-300 group-hover:translate-x-1">→</span>
           </button>
         </div>
       </div>

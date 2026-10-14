@@ -1,10 +1,11 @@
-import beach from "../../assets/home-assets/properties/beach.jpg";
-import apartment from "../../assets/home-assets/properties/apartment.jpg";
-import luxury from "../../assets/home-assets/properties/luxury.jpg";
-import town from "../../assets/home-assets/properties/moo-lo_LLbS1rS0-unsplash.jpg";
-import golf from "../../assets/home-assets/properties/golf.jpg";
-import villa from "../../assets/home-assets/properties/beachFront.jpg";
+import beach from "../../assets/home-assets/properties/beach.webp";
+import apartment from "../../assets/home-assets/properties/apartment.webp";
+import luxury from "../../assets/home-assets/properties/luxury.webp";
+import town from "../../assets/home-assets/properties/Sea.webp";
+import golf from "../../assets/home-assets/properties/golf.webp";
+import villa from "../../assets/home-assets/properties/beachFront.webp";
 import { useState } from "react";
+import { FaArrowRight } from "react-icons/fa6";
 const Properties = () => {
   const [images, _setImages] = useState([
     {
@@ -33,37 +34,48 @@ const Properties = () => {
     },
   ]);
   return (
-    <div className="pw-full px-6 py-10 md:px-15">
+    <div className="w-full px-6 py-10 md:px-15 isolate">
       <div className="">
-        <div className="bg-white shadow-lg rounded-xl p-8 md:p-12 lg:p-12">
-          <div className="flex justify-between items-center">
+        <div className="bg-white shadow-lg rounded-xl p-6 sm:p-8 md:p-12">
+          <div className="flex flex-row justify-between items-center gap-4">
             <div>
-              <p className="text-md font-semibold text-gray-500 tracking-widest">
+              <p className="text-xs md:text-sm font-semibold text-gray-500 tracking-widest">
                 PREMIUM PROPERTIES
               </p>
-              <h3 className="text-4xl font-medium font-serif max-w-2xl leading-18">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-medium font-serif max-w-2xl leading-tight md:leading-18">
                 Explore Our Property Collection
               </h3>
             </div>
-            <p className="text-2xl font-extrabold">→</p>
+            <button className="group w-10 h-10 md:w-11 md:h-11 shrink-0 active:scale-95 flex items-center justify-center bg-black text-white rounded-xl text-base transition-all cursor-pointer">
+              <FaArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+            </button>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-14 mt-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 transform-gpu gap-6 md:gap-10 mt-8 md:mt-10">
             {images.map((image) => {
               return (
                 <div
                   key={image.name}
-                  style={{
-                    backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 45%, rgba(0,0,0,0) 100%), url(${image.img})`,
-                  }}
-                  className="h-60 bg-cover bg-center rounded-xl p-8 flex items-end"
+                  className="relative h-64 overflow-hidden rounded-xl"
                 >
-                  <div>
-                    <p className="text-white text-2xl font-bold">
-                      {image.name}
-                    </p>
-                    <p className="text-gray-200 font-semibold text-sm ">
-                      View properties <span className="ml-2">→</span>
-                    </p>
+                  <img
+                    src={image.img}
+                    alt={image.name}
+                    loading="lazy"
+                    decoding="async"
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/40 to-transparent" />
+
+                  <div className="relative z-10 flex h-full items-end p-8">
+                    <div>
+                      <p className="text-2xl font-bold text-white">
+                        {image.name}
+                      </p>
+
+                      <button className="group cursor-pointer text-sm font-semibold text-gray-200">
+                        View properties <span className=" inline-block ml-2 transition-transform duration-300 group-hover:translate-x-1">→</span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               );
