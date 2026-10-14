@@ -1,19 +1,125 @@
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRef } from "react";
+gsap.registerPlugin(ScrollTrigger);
 const OverView = () => {
+  const overViewRef = useRef<HTMLDivElement>(null);
+  useGSAP(
+    () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: overViewRef.current,
+          start: "top 75%",
+          toggleActions: "play none none none",
+        },
+      });
+
+      tl.from(".overview-content", {
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out",
+      })
+        .from(".overview-eyebrow", {
+          y: 20,
+          opacity: 0,
+          duration: 0.6,
+          ease: "power3.out",
+        })
+        .from(
+          ".overview-heading",
+          {
+            clipPath: "inset(0 100% 0 0)",
+            duration: 1.2,
+            ease: "power4.out",
+          },
+          "-=0.25",
+        )
+        .from(
+          ".overview-description",
+          {
+            y: 25,
+            opacity: 0,
+            duration: 0.7,
+            ease: "power3.out",
+          },
+          "-=0.7",
+        )
+
+        .from(
+          ".overview-stat",
+          {
+            y: 30,
+            opacity: 0,
+            duration: 0.7,
+            stagger: 0.15,
+            ease: "power3.out",
+          },
+          "-=0.4",
+        )
+        .from(
+          ".overview-stat-title",
+          {
+            y: 15,
+            opacity: 0,
+            duration: 0.5,
+            stagger: 0.15,
+            ease: "power2.out",
+          },
+          "-=0.35",
+        )
+        .from(
+          ".overview-stat-description",
+          {
+            y: 10,
+            opacity: 0,
+            duration: 0.5,
+            stagger: 0.15,
+            ease: "power2.out",
+          },
+          "-=0.3",
+        );
+
+      const counters = gsap.utils.toArray<HTMLElement>(".overview-number");
+
+      counters.forEach((counter) => {
+        const value = Number(counter.dataset.value);
+        const suffix = counter.dataset.suffix || "";
+
+        const obj = { number: 0 };
+
+        tl.to(
+          obj,
+          {
+            number: value,
+            duration: 1.8,
+            ease: "power2.out",
+            onUpdate: () => {
+              counter.textContent = `${Math.round(obj.number)}${suffix}`;
+            },
+          },
+          "<",
+        );
+      });
+    },
+    { scope: overViewRef },
+  );
   return (
-    <section className="w-full py-10 px-6 md:px-15">
+    <section ref={overViewRef} className="w-full py-10 px-6 md:px-15">
       <div className="bg-[#FAF8F5] border border-[#EFECE6] rounded-3xl p-8 md:p-12 lg:p-14 shadow-sm">
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 pb-10 border-b border-[#E8E2D8]">
+        <div className="overview-content flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 pb-10 border-b border-[#E8E2D8]">
           <div className="max-w-xl">
-            <p className="text-xs md:text-sm font-semibold tracking-[0.25em] text-[#A88253] uppercase mb-4">
+            <p className="overview-eyebrow text-xs md:text-sm font-semibold tracking-[0.25em] text-[#A88253] uppercase mb-4">
               DUBAI AT A GLANCE
             </p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-neutral-900 leading-tight">
+            <h2 className="overview-heading text-3xl sm:text-4xl lg:text-5xl font-serif text-neutral-900 leading-tight">
               A thriving market,
               <br />
               full of opportunities.
             </h2>
           </div>
-          <div className="max-w-md">
+          <div className="overview-description max-w-md">
             <p className="text-neutral-500 text-sm md:text-base leading-relaxed">
               Dubai continues to attract global investors, tourists, and
               residents with its strong economy, world-class infrastructure and
@@ -22,7 +128,7 @@ const OverView = () => {
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 divide-y  md:divide-y-0 md:divide-x divide-[#E8E2D8] pt-10 gap-8 md:gap-0">
-          <div className="flex items-start gap-4 md:pr-8">
+          <div className="overview-stat flex items-start gap-4 md:pr-8">
             <div className="w-12 h-12 rounded-full bg-[#F4ECE1] flex items-center justify-center shrink-0 text-[#8D683A]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -37,19 +143,24 @@ const OverView = () => {
                 <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
               </svg>
             </div>
-            <div className="flex flex-col">
-              <span className="text-3xl md:text-4xl font-semibold text-neutral-900 tracking-tight">
-                33+
+            <div className=" overview-stat flex flex-col">
+              <span
+                data-value="33"
+                data-suffix="%"
+                className="overview-number text-3xl md:text-4xl font-semibold text-neutral-900 tracking-tight"
+              >
+                0%
               </span>
-              <span className="text-sm font-semibold text-neutral-800 mt-2">
+
+              <span className="overview-stat-title text-sm font-semibold text-neutral-800 mt-2">
                 Tourism
               </span>
-              <span className="text-xs text-neutral-500 mt-0.5">
+              <span className="overview-stat-description text-xs text-neutral-500 mt-0.5">
                 International visitors annually
               </span>
             </div>
           </div>
-          <div className="flex items-start gap-4 md:px-8 pt-6 md:pt-0">
+          <div className="overview-stat flex items-start gap-4 md:px-8 pt-6 md:pt-0">
             <div className="w-12 h-12 rounded-full bg-[#F4ECE1] flex items-center justify-center shrink-0 text-[#8D683A]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -64,19 +175,24 @@ const OverView = () => {
                 <path d="M12 2c1 3 4 5 4 9a6 6 0 0 1-12 0c0-4 3-6 4-9 1 2 2 3 4 0z" />
               </svg>
             </div>
-            <div className="flex flex-col">
-              <span className="text-3xl md:text-4xl font-semibold text-neutral-900 tracking-tight">
-                33%
+            <div className=" overview-stat flex flex-col">
+              <span
+                data-value="167"
+                data-suffix=""
+                className="overview-number text-3xl md:text-4xl font-semibold text-neutral-900 tracking-tight"
+              >
+                0
               </span>
-              <span className="text-sm font-semibold text-neutral-800 mt-2">
+
+              <span className="overview-stat-title text-sm font-semibold text-neutral-800 mt-2">
                 Customer
               </span>
-              <span className="text-xs text-neutral-500 mt-0.5">
+              <span className="overview-stat-description text-xs text-neutral-500 mt-0.5">
                 Annual property growth
               </span>
             </div>
           </div>
-          <div className="flex items-start gap-4 md:pl-8 pt-6 md:pt-0">
+          <div className="overview-stat flex items-start gap-4 md:pl-8 pt-6 md:pt-0">
             <div className="w-12 h-12 rounded-full bg-[#F4ECE1] flex items-center justify-center shrink-0 text-[#8D683A]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -88,13 +204,18 @@ const OverView = () => {
               </svg>
             </div>
             <div className="flex flex-col">
-              <span className="text-3xl md:text-4xl font-semibold text-neutral-900 tracking-tight">
-                167
+              <span
+                data-value="167"
+                data-suffix=""
+                className="overview-number text-3xl md:text-4xl font-semibold text-neutral-900 tracking-tight"
+              >
+                0
               </span>
-              <span className="text-sm font-semibold text-neutral-800 mt-2">
+
+              <span className="overview-stat-title text-sm font-semibold text-neutral-800 mt-2">
                 Exclusive Premium
               </span>
-              <span className="text-xs text-neutral-500 mt-0.5">
+              <span className="overview-stat-description text-xs text-neutral-500 mt-0.5">
                 Residential properties
               </span>
             </div>
