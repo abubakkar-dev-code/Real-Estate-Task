@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import {
   FaPhone,
@@ -9,8 +9,88 @@ import {
   FaYoutube,
   FaXTwitter,
 } from "react-icons/fa6";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Footer = () => {
+  const footerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: footerRef.current,
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      });
+
+      tl.from(".footer-card", {
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out",
+      })
+        .from(
+          ".footer-logo",
+          {
+            y: 25,
+            opacity: 0,
+            duration: 0.6,
+            ease: "power3.out",
+          },
+          "-=0.4",
+        )
+        .from(
+          ".footer-column",
+          {
+            y: 30,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.12,
+            ease: "power3.out",
+          },
+          "-=0.4",
+        )
+        .from(
+          ".footer-link",
+          {
+            y: 10,
+            opacity: 0,
+            duration: 0.4,
+            stagger: 0.04,
+            ease: "power2.out",
+          },
+          "-=0.4",
+        )
+        .from(
+          ".footer-social",
+          {
+            scale: 0,
+            opacity: 0,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: "back.out(1.7)",
+          },
+          "-=0.3",
+        )
+        .from(
+          ".footer-bottom",
+          {
+            y: 15,
+            opacity: 0,
+            duration: 0.5,
+            ease: "power2.out",
+          },
+          "-=0.2",
+        );
+    },
+    { scope: footerRef },
+  );
+
   const [links] = useState([
     { name: "Properties", href: "/properties" },
     { name: "Smart Ownership", href: "/smart" },
@@ -48,10 +128,10 @@ const Footer = () => {
   ];
 
   return (
-    <div className="w-full px-6 py-10 md:px-15">
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12">
+    <div ref={footerRef} className="w-full px-6 py-10 md:px-15">
+      <div className="footer-card bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
-          <div className="flex flex-col">
+          <div className="footer-logo flex flex-col">
             <Link to="/" className="inline-block">
               <p className="text-3xl md:text-4xl tracking-widest font-light font-serif text-slate-900">
                 LUXE
@@ -61,24 +141,26 @@ const Footer = () => {
               </p>
             </Link>
           </div>
-          <div>
+
+          <div className="footer-column">
             <h3 className="font-semibold text-slate-900 text-base mb-4">
               Quick Links
             </h3>
+
             <ul className="flex flex-col gap-2.5">
               {links.map((link) => (
                 <li key={link.name}>
                   {link.href.startsWith("#") ? (
                     <a
                       href={link.href}
-                      className="text-sm text-gray-600 hover:text-slate-900 transition-colors"
+                      className="footer-link inline-block text-sm text-gray-600 hover:text-slate-900 transition-colors"
                     >
                       {link.name}
                     </a>
                   ) : (
                     <Link
                       to={link.href}
-                      className="text-sm text-gray-600 hover:text-slate-900 transition-colors"
+                      className="footer-link inline-block text-sm text-gray-600 hover:text-slate-900 transition-colors"
                     >
                       {link.name}
                     </Link>
@@ -87,18 +169,21 @@ const Footer = () => {
               ))}
             </ul>
           </div>
-          <div>
+
+          <div className="footer-column">
             <h3 className="font-semibold text-slate-900 text-base mb-4">
               Contact
             </h3>
+
             <ul className="flex flex-col gap-3.5">
               {contactInfo.map((contact) => {
                 const IconComponent = contact.icon;
+
                 return (
                   <li key={contact.id}>
                     <a
                       href={contact.href}
-                      className="flex items-center gap-3 text-sm text-gray-700 hover:text-slate-900 transition-colors"
+                      className="footer-link flex items-center gap-3 text-sm text-gray-700 hover:text-slate-900 transition-colors"
                     >
                       <IconComponent className="text-sm text-slate-800 shrink-0" />
                       <span>{contact.value}</span>
@@ -108,40 +193,47 @@ const Footer = () => {
               })}
             </ul>
           </div>
-          <div>
+
+          <div className="footer-column">
             <h3 className="font-semibold text-slate-900 text-base mb-4">
               Follow Us
             </h3>
+
             <div className="flex items-center gap-4 text-xl text-slate-800">
               {socialLinks.map((social) => {
                 const IconComponent2 = social.icon;
+
                 return (
                   <a
                     key={social.id}
                     href={social.href}
                     aria-label={social.label}
-                    className="hover:text-slate-600 transition-colors"
+                    className="footer-social hover:text-slate-600 transition-colors"
                   >
-                    <IconComponent2/>
+                    <IconComponent2 />
                   </a>
                 );
               })}
             </div>
           </div>
         </div>
+
         <hr className="my-8 border-t border-gray-200" />
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+
+        <div className="footer-bottom flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-500">
           <p>© 2025 Luxe Properties. All rights reserved.</p>
+
           <div className="flex items-center gap-6">
             <Link
               to="/privacy"
-              className="hover:text-slate-900 transition-colors"
+              className="footer-link hover:text-slate-900 transition-colors"
             >
               Privacy Policy
             </Link>
+
             <Link
               to="/terms"
-              className="hover:text-slate-900 transition-colors"
+              className="footer-link hover:text-slate-900 transition-colors"
             >
               Terms & Conditions
             </Link>

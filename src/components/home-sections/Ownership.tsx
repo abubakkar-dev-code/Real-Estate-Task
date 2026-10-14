@@ -161,7 +161,7 @@ const Ownership = () => {
         <div className="flex flex-col md:flex-row gap-y-6 md:gap-y-0 lg:gap-x-14 items-center md:items-start">
           {iconsArray.map((item) => (
             <React.Fragment key={item.idx}>
-              <div className="ownership-step  text-center flex flex-col gap-2 md:gap-4 items-center max-w-55">
+              <div className="ownership-step md:mt-5 lg:mt-0 text-center flex flex-col gap-2 md:gap-4 items-center max-w-55">
                 <div className="ownership-icon w-14 mt-4 h-14 lg:w-28 lg:h-28 bg-transparent border border-gray-300 rounded-full flex justify-center items-center">
                   {item.icon}
                 </div>

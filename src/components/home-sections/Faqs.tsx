@@ -1,10 +1,75 @@
 import { useState } from "react";
 import resort from "../../assets/home-assets/Resort.webp";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { useRef } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Faqs = () => {
-  const [openId, setOpenId] = useState<number | null>(null);
+  const faqRef = useRef<HTMLDivElement>(null);
+  useGSAP(
+    () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: faqRef.current,
+          start: "top 75%",
+          toggleActions: "play none none none",
+        },
+      });
 
+      tl.from(".faq-image", {
+        clipPath: "inset(0 100% 0 0)",
+        scale: 1.08,
+        duration: 1.4,
+        ease: "power3.out",
+      })
+        .from(
+          ".faq-eyebrow",
+          {
+            y: 20,
+            opacity: 0,
+            duration: 0.6,
+            ease: "power3.out",
+          },
+          "-=0.9",
+        )
+        .from(
+          ".faq-heading",
+          {
+            clipPath: "inset(0 100% 0 0)",
+            duration: 1,
+            ease: "power4.out",
+          },
+          "-=0.3",
+        )
+        .from(
+          ".faq-description",
+          {
+            y: 15,
+            opacity: 0,
+            duration: 0.5,
+            ease: "power2.out",
+          },
+          "-=0.5",
+        )
+        .from(
+          ".faq-item",
+          {
+            y: 35,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.12,
+            ease: "power3.out",
+          },
+          "-=0.2",
+        );
+    },
+    { scope: faqRef },
+  );
+  const [openId, setOpenId] = useState<number | null>(null);
   const [dubaiFeatures, _setDubaiFeatures] = useState([
     {
       idx: 1,
@@ -51,10 +116,11 @@ const Faqs = () => {
   ]);
 
   return (
-    <div className="w-full px-4 py-8 sm:px-6 sm:py-10 md:px-15">
+    <div ref={faqRef} className="w-full px-4 py-8 sm:px-6 sm:py-10 md:px-15">
       <div className="bg-white shadow-md rounded-xl overflow-hidden flex flex-col md:flex-row gap-0">
         <div
           className="
+           faq-image
             w-full md:w-2/5
             min-h-105
             sm:min-h-112.5
@@ -75,7 +141,7 @@ const Faqs = () => {
           }}
         >
           <div className="flex flex-col gap-3 sm:gap-4">
-            <p className="text-[10px] sm:text-xs md:text-sm max-w-sm text-gray-300 font-semibold tracking-[0.2em]">
+            <p className="faq-eyebrow text-[10px] sm:text-xs md:text-sm max-w-sm text-gray-300 font-semibold tracking-[0.2em]">
               FREQUENTLY ASKED QUESTIONS
             </p>
 
@@ -87,12 +153,13 @@ const Faqs = () => {
                 font-serif
                 max-w-sm
                 leading-tight
+                faq-heading 
               "
             >
               Find answers to your questions
             </h3>
 
-            <p className="text-xs sm:text-sm text-gray-300 font-semibold tracking-wide max-w-sm leading-relaxed">
+            <p className="faq-description text-xs sm:text-sm text-gray-300 font-semibold tracking-wide max-w-sm leading-relaxed">
               Everything you need to know about investing in Dubai real estate.
             </p>
           </div>
@@ -112,6 +179,7 @@ const Faqs = () => {
               <div
                 key={item.idx}
                 className="
+                  faq-item
                   bg-white
                   py-5
                   sm:py-6
@@ -127,7 +195,6 @@ const Faqs = () => {
                 "
                 onClick={() => setOpenId(openId === item.idx ? null : item.idx)}
               >
-                {/* Question */}
                 <div className="flex justify-between items-center gap-4">
                   <div
                     className="

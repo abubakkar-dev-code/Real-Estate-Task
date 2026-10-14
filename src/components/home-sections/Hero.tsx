@@ -1,33 +1,38 @@
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import heroImg from "../../assets/home-assets/Hero.webp";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import houseHalf from "../../assets/home-assets/house-half.png";
+import houseFull from "../../assets/home-assets/house-full.png";
 
-gsap.registerPlugin(gsap)
+gsap.registerPlugin(ScrollTrigger);
+
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
-      gsap.fromTo(
-        ".hero-bg",
-        { scale: 1.14, z: 0.1 },
-        {
-          scale: 1,
-          z: 0.1,
+      const intro = gsap.timeline({
+        delay: 0.2,
+      });
+
+      intro
+        .from(".hero-bg", {
+          scale: 1.14,
           duration: 2.6,
           ease: "power1.out",
           force3D: true,
-          delay: 0.05,
-        },
-      );
-      const tl = gsap.timeline({ delay: 0.2 });
-      tl.from(".hero-eyebrow", {
-        y: 25,
-        opacity: 0,
-        duration: 0.6,
-        ease: "power2.out",
-      })
+        })
+        .from(
+          ".hero-eyebrow",
+          {
+            y: 25,
+            opacity: 0,
+            duration: 0.6,
+            ease: "power2.out",
+          },
+          "-=2",
+        )
         .from(
           ".hero-title",
           {
@@ -48,42 +53,103 @@ const Hero = () => {
           },
           "-=0.4",
         )
-        .fromTo(
+        .from(
           ".hero-button",
-          { y: 20, opacity: 0 },
           {
-            y: 0,
-            opacity: 1,
+            y: 20,
+            opacity: 0,
             duration: 0.6,
             ease: "power2.out",
+          },
+          "-=0.2",
+        );
+
+      gsap.set(".house-full", {
+        clipPath: "inset(100% 0% 0% 0%)",
+      });
+
+      const scrollTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: "top top",
+          end: "+=1000",
+          scrub: 1,
+          pin: true,
+          anticipatePin: 1,
+        },
+      });
+      scrollTl
+        .to(
+          ".hero-content",
+          {
+            yPercent: -25,
+            opacity: 0,
+            ease: "none",
+          },
+          0,
+        )
+        .to(
+          ".house-full",
+          {
+            clipPath: "inset(0% 0% 0% 0%)",
+            ease: "none",
+            duration: 1,
+          },
+          0,
+        )
+        .to(
+          ".hero-caption",
+          {
+            opacity: 1,
+            duration: 1,
+            ease: "power2.out",
+          },
+          "<",
+        )
+        .to(
+          ".house-half",
+          {
+            opacity: 0,
+            scale: 1.03,
+            ease: "none",
+            duration: 0.4,
           },
           "-=0.2",
         );
     },
     { scope: heroRef },
   );
-
   return (
-    <div ref={heroRef} className="relative overflow-hidden isolate">
+    <div ref={heroRef} className="relative overflow-hidden h-screen isolate">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <img
-          src={heroImg}
-          alt="hero-img"
-          loading="eager"
-          decoding="async"
-          fetchPriority="high"
-          className="hero-bg w-full h-full object-cover object-center will-change-transform backface-hidden transform-gpu"
-        />
-        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 z-10 flex items-center justify-center">
+          <div className="relative w-full aspect-square">
+            <img
+              src={houseHalf}
+              alt="Half constructed house"
+              className="house-half absolute inset-0 w-full h-full object-contain"
+            />
+            <img
+              src={houseFull}
+              alt="Completed house"
+              className="house-full absolute inset-0 w-full h-full object-contain"
+            />
+          </div>
+        </div>
+        <div className="absolute inset-0 z-20 bg-black/30" />
+        <div className="hero-caption absolute z-30 bottom-10 md:bottom-14 left-0 w-full px-6 md:px-15 opacity-0">
+          <p className="text-white text-xl md:text-4xl font-serif drop-shadow-lg">
+            Your vision. Fully built.
+          </p>
+        </div>
       </div>
-
-      <div className="relative z-10 min-h-145 md:h-170 w-full pt-8 md:pt-15 flex flex-col justify-center md:justify-start">
+      <div className="relative z-20 min-h-145 md:h-170 w-full pt-8 md:pt-15 flex flex-col justify-center md:justify-start">
         <div className="hero-content py-10 md:py-18 px-6 md:px-15 flex flex-col gap-4 md:gap-6">
           <p className="hero-eyebrow text-xs sm:text-sm md:text-lg font-semibold tracking-widest text-slate-100">
             EXPLORE DUBAI REAL ESTATE
           </p>
 
-          <h1 className="hero-title text-3xl sm:text-5xl md:text-7xl lg:font-medium font-serif max-w-2xl leading-tight md:leading-20">
+          <h1 className="text-white hero-title text-3xl sm:text-5xl md:text-7xl lg:font-medium font-serif max-w-2xl leading-tight md:leading-20">
             Smart Property Ownership in Dubai
           </h1>
 
