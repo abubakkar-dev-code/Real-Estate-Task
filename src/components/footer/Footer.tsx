@@ -114,7 +114,7 @@ const Footer = () => {
             </h3>
             <div className="flex items-center gap-4 text-xl text-slate-800">
               {socialLinks.map((social) => {
-                const IconComponent = social.icon;
+                const IconComponent2 = social.icon;
                 return (
                   <a
                     key={social.id}
@@ -122,7 +122,7 @@ const Footer = () => {
                     aria-label={social.label}
                     className="hover:text-slate-600 transition-colors"
                   >
-                    <IconComponent />
+                    <IconComponent2/>
                   </a>
                 );
               })}
