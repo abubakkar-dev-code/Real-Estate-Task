@@ -92,24 +92,24 @@ const Footer = () => {
   );
 
   const [links] = useState([
-    { name: "Properties", href: "/properties" },
-    { name: "Smart Ownership", href: "/smart" },
-    { name: "Why Dubai", href: "/why" },
-    { name: "About", href: "/about" },
-    { name: "FAQ", href: "/faqs" },
+    { name: "Properties", href: "#properties" },
+    { name: "Smart Ownership", href: "#ownership" },
+    { name: "Why Dubai", href: "#dubai" },
+    { name: "About", href: "#overview" },
+    { name: "FAQ", href: "#faqs" },
   ]);
 
   const contactInfo = [
     {
       id: "phone",
-      value: "+971 4 123 4567",
-      href: "tel:+97141234567",
+      value: "+91 8072062979",
+      href: "tel:+918072062979",
       icon: FaPhone,
     },
     {
       id: "email",
-      value: "hello@luxeproperties.com",
-      href: "mailto:hello@luxeproperties.com",
+      value: "abubakkarm620@gmail.com",
+      href: "mailto:abubakkarm620@gmail.com",
       icon: FaEnvelope,
     },
     {
