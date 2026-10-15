@@ -13,32 +13,32 @@ const Hero = () => {
   useGSAP(
     () => {
       const intro = gsap.timeline({
-        delay: 0.2,
+        delay: 0.05,
       });
 
       intro
         .from(".hero-bg", {
-          scale: 1.14,
-          duration: 2.6,
-          ease: "power1.out",
+          scale: 1.12,
+          duration: 1.4,
+          ease: "power2.out",
           force3D: true,
         })
         .from(
           ".hero-eyebrow",
           {
-            y: 25,
+            y: 20,
             opacity: 0,
-            duration: 0.6,
+            duration: 0.5,
             ease: "power2.out",
           },
-          "-=2",
+          "-=1.1",
         )
         .from(
           ".hero-title",
           {
-            y: 40,
+            y: 30,
             opacity: 0,
-            duration: 0.8,
+            duration: 0.6,
             ease: "power3.out",
           },
           "-=0.3",
@@ -46,9 +46,9 @@ const Hero = () => {
         .from(
           ".hero-description",
           {
-            y: 25,
+            y: 20,
             opacity: 0,
-            duration: 0.6,
+            duration: 0.5,
             ease: "power2.out",
           },
           "-=0.4",
@@ -56,12 +56,12 @@ const Hero = () => {
         .from(
           ".hero-button",
           {
-            y: 20,
+            y: 15,
             opacity: 0,
-            duration: 0.6,
+            duration: 0.5,
             ease: "power2.out",
           },
-          "-=0.2",
+          "-=0.3",
         );
 
       gsap.set(".house-full", {
@@ -73,7 +73,7 @@ const Hero = () => {
           trigger: heroRef.current,
           start: "top top",
           end: "+=1000",
-          scrub: 1,
+          scrub: 0.4,
           pin: true,
           anticipatePin: 1,
         },
@@ -101,7 +101,7 @@ const Hero = () => {
           ".hero-caption",
           {
             opacity: 1,
-            duration: 1,
+            duration: 0.8,
             ease: "power2.out",
           },
           "<",
@@ -110,7 +110,7 @@ const Hero = () => {
           ".house-half",
           {
             opacity: 0,
-            scale: 1.03,
+            scale: 1.02,
             ease: "none",
             duration: 0.4,
           },

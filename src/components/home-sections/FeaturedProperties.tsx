@@ -14,56 +14,56 @@ const FeaturedProperties = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: featuredRef.current,
-          start: "top 75%",
+          start: "top 85%",
           toggleActions: "play none none none",
         },
       });
       tl.from(".featured-content", {
-        x: -60,
+        x: -40,
         opacity: 0,
-        duration: 0.8,
-        ease: "power3.out",
+        duration: 0.6,
+        ease: "power2.out",
       })
         .from(
           ".featured-main-image",
           {
             clipPath: "inset(100% 0% 0% 0%)",
-            duration: 1.2,
+            duration: 0.7,
             ease: "power3.out",
           },
-          "-=0.5",
+          "-=0.4",
         )
         .from(
           ".featured-main-image img",
           {
-            scale: 1.12,
-            duration: 1.4,
-            ease: "power3.out",
+            scale: 1.08,
+            duration: 0.8,
+            ease: "power2.out",
             force3D: true,
           },
-          "-=1.0",
+          "-=0.6",
         )
         .from(
           ".featured-small-image",
           {
             clipPath: "inset(100% 0% 0% 0%)",
             opacity: 0,
-            duration: 0.9,
-            stagger: 0.2,
+            duration: 0.6,
+            stagger: 0.1,
             ease: "power3.out",
           },
-          "-=0.7",
+          "-=0.5",
         )
         .from(
           ".featured-small-image img",
           {
-            scale: 1.1,
-            duration: 1.2,
-            stagger: 0.2,
-            ease: "power3.out",
+            scale: 1.06,
+            duration: 0.7,
+            stagger: 0.1,
+            ease: "power2.out",
             force3D: true,
           },
-          "-=0.8",
+          "-=0.5",
         );
       const images = gsap.utils.toArray<HTMLImageElement>(
         ".featured-image img",

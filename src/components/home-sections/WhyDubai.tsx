@@ -17,78 +17,78 @@ const WhyDubai = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 75%",
+          start: "top 85%",
           toggleActions: "play none none none",
         },
       });
       tl.from(".dubai-image", {
         clipPath: "inset(0 100% 0 0)",
-        scale: 1.12,
-        duration: 1.4,
+        scale: 1.08,
+        duration: 0.8,
         ease: "power3.out",
       })
         .from(
           ".dubai-eyebrow",
           {
-            y: 20,
+            y: 15,
             opacity: 0,
-            duration: 0.6,
-            ease: "power3.out",
+            duration: 0.4,
+            ease: "power2.out",
           },
-          "-=0.8",
+          "-=0.5",
         )
         .from(
           ".dubai-heading",
           {
             clipPath: "inset(0 100% 0 0)",
-            duration: 1,
-            ease: "power4.out",
+            duration: 0.7,
+            ease: "power3.out",
           },
-          "-=0.3",
+          "-=0.2",
         )
         .from(
           ".dubai-feature",
           {
-            x: 40,
+            x: 25,
             opacity: 0,
-            duration: 0.6,
-            stagger: 0.15,
-            ease: "power3.out",
+            duration: 0.4,
+            stagger: 0.08,
+            ease: "power2.out",
           },
-          "-=0.3",
+          "-=0.2",
         )
         .from(
           ".dubai-feature-icon",
           {
             scale: 0,
             opacity: 0,
-            duration: 0.5,
-            stagger: 0.15,
-            ease: "back.out(1.7)",
+            duration: 0.4,
+            stagger: 0.08,
+            ease: "back.out(1.5)",
           },
-          "-=0.5",
+          "-=0.3",
         )
         .from(
           ".dubai-feature-name",
           {
-            x: 15,
+            x: 10,
             opacity: 0,
-            duration: 0.4,
-            stagger: 0.15,
+            duration: 0.3,
+            stagger: 0.08,
             ease: "power2.out",
           },
-          "-=0.4",
+          "-=0.3",
         )
         .from(
           ".dubai-feature-description",
           {
             y: 8,
             opacity: 0,
-            duration: 0.4,
-            stagger: 0.15,
+            duration: 0.3,
+            stagger: 0.08,
             ease: "power2.out",
           },
-          "-=0.3",
+          "-=0.2",
         );
       const image = document.querySelector(".dubai-image") as HTMLElement;
       const wrapper = image.parentElement;

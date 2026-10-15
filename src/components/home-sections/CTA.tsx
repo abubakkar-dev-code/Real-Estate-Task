@@ -13,55 +13,55 @@ const CTA = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: ctaRef.current,
-          start: "top 80%",
+          start: "top 85%",
           toggleActions: "play none none none",
         },
       });
 
       tl.from(".cta-background", {
-        scale: 1.08,
-        duration: 1.6,
-        ease: "power3.out",
+        scale: 1.05,
+        duration: 0.9,
+        ease: "power2.out",
       })
         .from(
           ".cta-eyebrow",
           {
-            y: 25,
+            y: 15,
             opacity: 0,
-            duration: 0.6,
-            ease: "power3.out",
+            duration: 0.4,
+            ease: "power2.out",
           },
-          "-=1",
+          "-=0.6",
         )
         .from(
           ".cta-heading",
           {
             clipPath: "inset(0 100% 0 0)",
-            duration: 1,
-            ease: "power4.out",
+            duration: 0.7,
+            ease: "power3.out",
           },
-          "-=0.3",
+          "-=0.2",
         )
         .from(
           ".cta-description",
           {
-            y: 20,
+            y: 15,
             opacity: 0,
-            duration: 0.6,
-            ease: "power3.out",
+            duration: 0.4,
+            ease: "power2.out",
           },
-          "-=0.5",
+          "-=0.3",
         )
         .from(
           ".cta-button",
           {
-            y: 20,
+            y: 15,
             scale: 0.9,
             opacity: 0,
-            duration: 0.7,
+            duration: 0.5,
             ease: "back.out(1.5)",
           },
-          "-=0.4",
+          "-=0.3",
         );
     },
     { scope: ctaRef },

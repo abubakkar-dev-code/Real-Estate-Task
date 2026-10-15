@@ -10,75 +10,78 @@ const OverView = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: overViewRef.current,
-          start: "top 75%",
+          start: "top 85%",
           toggleActions: "play none none none",
         },
       });
 
       tl.from(".overview-content", {
-        y: 40,
+        y: 30,
         opacity: 0,
-        duration: 0.8,
-        ease: "power3.out",
+        duration: 0.5,
+        ease: "power2.out",
       })
-        .from(".overview-eyebrow", {
-          y: 20,
-          opacity: 0,
-          duration: 0.6,
-          ease: "power3.out",
-        })
+        .from(
+          ".overview-eyebrow",
+          {
+            y: 15,
+            opacity: 0,
+            duration: 0.4,
+            ease: "power2.out",
+          },
+          "-=0.3",
+        )
         .from(
           ".overview-heading",
           {
             clipPath: "inset(0 100% 0 0)",
-            duration: 1.2,
-            ease: "power4.out",
+            duration: 0.7,
+            ease: "power3.out",
           },
           "-=0.25",
         )
         .from(
           ".overview-description",
           {
-            y: 25,
+            y: 15,
             opacity: 0,
-            duration: 0.7,
-            ease: "power3.out",
-          },
-          "-=0.7",
-        )
-
-        .from(
-          ".overview-stat",
-          {
-            y: 30,
-            opacity: 0,
-            duration: 0.7,
-            stagger: 0.15,
-            ease: "power3.out",
+            duration: 0.4,
+            ease: "power2.out",
           },
           "-=0.4",
         )
         .from(
-          ".overview-stat-title",
+          ".overview-stat",
           {
-            y: 15,
+            y: 20,
             opacity: 0,
-            duration: 0.5,
-            stagger: 0.15,
+            duration: 0.4,
+            stagger: 0.08,
             ease: "power2.out",
           },
-          "-=0.35",
+          "-=0.2",
+        )
+        .from(
+          ".overview-stat-title",
+          {
+            y: 10,
+            opacity: 0,
+            duration: 0.2,
+            stagger: 0.08,
+            ease: "power2.out",
+          },
+          "-=0.2",
         )
         .from(
           ".overview-stat-description",
           {
             y: 10,
             opacity: 0,
-            duration: 0.5,
-            stagger: 0.15,
+            duration: 0.2,
+            stagger: 0.08,
             ease: "power2.out",
           },
-          "-=0.3",
+          "-=0.2",
         );
 
       const counters = gsap.utils.toArray<HTMLElement>(".overview-number");

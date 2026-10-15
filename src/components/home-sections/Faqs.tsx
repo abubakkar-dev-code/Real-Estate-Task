@@ -15,54 +15,54 @@ const Faqs = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: faqRef.current,
-          start: "top 75%",
+          start: "top 85%",
           toggleActions: "play none none none",
         },
       });
 
       tl.from(".faq-image", {
         clipPath: "inset(0 100% 0 0)",
-        scale: 1.08,
-        duration: 1.4,
+        scale: 1.05,
+        duration: 0.8,
         ease: "power3.out",
       })
         .from(
           ".faq-eyebrow",
           {
-            y: 20,
-            opacity: 0,
-            duration: 0.6,
-            ease: "power3.out",
-          },
-          "-=0.9",
-        )
-        .from(
-          ".faq-heading",
-          {
-            clipPath: "inset(0 100% 0 0)",
-            duration: 1,
-            ease: "power4.out",
-          },
-          "-=0.3",
-        )
-        .from(
-          ".faq-description",
-          {
             y: 15,
             opacity: 0,
-            duration: 0.5,
+            duration: 0.4,
             ease: "power2.out",
           },
           "-=0.5",
         )
         .from(
+          ".faq-heading",
+          {
+            clipPath: "inset(0 100% 0 0)",
+            duration: 0.7,
+            ease: "power3.out",
+          },
+          "-=0.2",
+        )
+        .from(
+          ".faq-description",
+          {
+            y: 10,
+            opacity: 0,
+            duration: 0.4,
+            ease: "power2.out",
+          },
+          "-=0.3",
+        )
+        .from(
           ".faq-item",
           {
-            y: 35,
+            y: 20,
             opacity: 0,
-            duration: 0.6,
-            stagger: 0.12,
-            ease: "power3.out",
+            duration: 0.4,
+            stagger: 0.08,
+            ease: "power2.out",
           },
           "-=0.2",
         );

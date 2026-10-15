@@ -20,68 +20,68 @@ const Properties = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: propertyRef.current,
-          start: "top 75%",
+          start: "top 85%",
           toggleActions: "play none none none",
         },
       });
 
       tl.from(".property-eyebrow", {
-        y: 20,
+        y: 15,
         opacity: 0,
-        duration: 0.6,
-        ease: "power3.out",
+        duration: 0.4,
+        ease: "power2.out",
       })
         .from(
           ".property-heading",
           {
             clipPath: "inset(0 100% 0 0)",
-            duration: 1,
-            ease: "power4.out",
+            duration: 0.7,
+            ease: "power3.out",
           },
-          "-=0.3",
+          "-=0.2",
         )
         .from(
           ".property-card",
           {
-            y: 50,
+            y: 35,
             opacity: 0,
-            duration: 0.7,
-            stagger: 0.15,
-            ease: "power3.out",
+            duration: 0.5,
+            stagger: 0.08,
+            ease: "power2.out",
           },
-          "-=0.3",
+          "-=0.2",
         )
         .from(
           ".property-image",
           {
-            scale: 1.08,
-            duration: 1,
-            stagger: 0.12,
-            ease: "power3.out",
+            scale: 1.06,
+            duration: 0.7,
+            stagger: 0.08,
+            ease: "power2.out",
           },
-          "-=0.7",
+          "-=0.5",
         )
         .from(
           ".property-name",
           {
-            y: 15,
+            y: 10,
             opacity: 0,
-            duration: 0.5,
-            stagger: 0.15,
+            duration: 0.3,
+            stagger: 0.08,
             ease: "power2.out",
           },
-          "-=0.8",
+          "-=0.6",
         )
         .from(
           ".property-button",
           {
             y: 10,
             opacity: 0,
-            duration: 0.4,
-            stagger: 0.15,
+            duration: 0.3,
+            stagger: 0.08,
             ease: "power2.out",
           },
-          "-=0.5",
+          "-=0.4",
         );
 
       const images = gsap.utils.toArray<HTMLImageElement>(".container-img img");

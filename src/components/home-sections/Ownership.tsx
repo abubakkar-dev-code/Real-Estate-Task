@@ -20,53 +20,53 @@ const Ownership = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: ownershipRef.current,
-          start: "top 70%",
+          start: "top 85%",
           toggleActions: "play none none none",
         },
       });
 
       tl.from(".ownership-bg", {
-        scale: 1.08,
-        duration: 1.8,
+        scale: 1.05,
+        duration: 0.9,
         ease: "power2.out",
       })
         .from(
           ".ownership-clouds",
           {
             opacity: 0,
-            x: -100,
-            duration: 1.8,
+            x: -50,
+            duration: 1.0,
             ease: "power2.out",
           },
-          "-=1.4",
+          "-=0.7",
         )
         .from(
           ".ownership-eyebrow",
           {
-            y: 20,
+            y: 15,
             opacity: 0,
-            duration: 0.6,
-            ease: "power3.out",
+            duration: 0.4,
+            ease: "power2.out",
           },
-          "-=1.2",
+          "-=0.6",
         )
         .from(
           ".ownership-title",
           {
             clipPath: "inset(0 100% 0 0)",
-            duration: 1,
-            ease: "power4.out",
+            duration: 0.7,
+            ease: "power3.out",
           },
-          "-=0.3",
+          "-=0.2",
         )
         .from(
           ".ownership-icon",
           {
             scale: 0,
             opacity: 0,
-            duration: 0.7,
-            stagger: 0.3,
-            ease: "back.out(1.7)",
+            duration: 0.4,
+            stagger: 0.1,
+            ease: "back.out(1.5)",
           },
           "-=0.2",
         )
@@ -75,33 +75,33 @@ const Ownership = () => {
           {
             scaleX: 0,
             transformOrigin: "left center",
-            duration: 0.6,
-            stagger: 0.3,
+            duration: 0.4,
+            stagger: 0.1,
             ease: "power2.out",
           },
-          "-=0.5",
+          "-=0.3",
         )
         .from(
           ".ownership-name",
           {
-            y: 15,
+            y: 10,
             opacity: 0,
-            duration: 0.5,
-            stagger: 0.15,
+            duration: 0.3,
+            stagger: 0.08,
             ease: "power2.out",
           },
-          "-=0.3",
+          "-=0.2",
         )
         .from(
           ".ownership-description",
           {
             y: 10,
             opacity: 0,
-            duration: 0.5,
-            stagger: 0.15,
+            duration: 0.3,
+            stagger: 0.08,
             ease: "power2.out",
           },
-          "-=0.3",
+          "-=0.2",
         );
       gsap.to(".ownership-clouds", {
         xPercent: -50,
