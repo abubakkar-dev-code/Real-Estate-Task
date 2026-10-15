@@ -127,7 +127,7 @@ const Hero = () => {
             <img
               src={houseHalf}
               alt="Half constructed house"
-              className="house-half absolute inset-0 w-full h-full object-contain"
+              className="house-half absolute inset-0 w-full h-full  object-contain"
             />
             <img
               src={houseFull}

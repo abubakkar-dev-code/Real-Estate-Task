@@ -140,8 +140,8 @@ const Properties = () => {
     },
   ]);
   return (
-    <div ref={propertyRef} className="w-full px-6 py-10 md:px-15 isolate">
-      <div className="">
+    <div id="properties" ref={propertyRef} className="w-full px-6 py-10 md:px-15 isolate">
+      <div>
         <div className="bg-white shadow-lg rounded-xl p-6 sm:p-8 md:p-12">
           <div className="flex flex-row justify-between items-center gap-4">
             <div>

@@ -4,6 +4,10 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import dubaiImage from "../../assets/home-assets/AL-burjh.png";
+import { BsHouseCheckFill } from "react-icons/bs";
+import { FaLocationDot } from "react-icons/fa6";
+import { MdSignalWifiStatusbar4Bar } from "react-icons/md";
+import { RiGlobalFill } from "react-icons/ri";
 
 gsap.registerPlugin(ScrollTrigger);
 const WhyDubai = () => {
@@ -113,25 +117,29 @@ const WhyDubai = () => {
       idx: 1,
       name: "World-class lifestyle",
       description: "Luxury, culture and endless experiences.",
+      icon: <BsHouseCheckFill className=" text-2xl" />,
     },
     {
       idx: 2,
       name: "Strategic location",
       description: "Gateway between Europe, Asia and Africa.",
+      icon: <FaLocationDot className=" text-2xl" />,
     },
     {
       idx: 3,
       name: "Tax advanteages",
       description: "No personal income tax.",
+      icon: <MdSignalWifiStatusbar4Bar className=" text-2xl" />,
     },
     {
       idx: 4,
       name: "Strong economy",
       description: "A stable and investor-friendly market.",
+      icon: <RiGlobalFill className=" text-2xl" />,
     },
   ]);
   return (
-    <div ref={containerRef} className="w-full px-6 py-10 md:px-15 sm:w-full">
+    <div id="dubai" ref={containerRef} className="w-full px-6 py-10 md:px-15 sm:w-full">
       <div className="bg-white shadow-md rounded-xl overflow-hidden flex flex-col md:flex-row gap-6 md:gap-12">
         <div className="conatiner-img w-full md:w-1/2 md:flex-[50%]">
           <img
@@ -153,10 +161,10 @@ const WhyDubai = () => {
             {dubaiFeatures.map((item) => (
               <div
                 key={item.idx}
-                className="dubai-feature flex flex-col sm:flex-row items-center gap-4 sm:gap-6 md:gap-8 border border-[#E8E2D8] p-4 rounded-lg"
+                className="dubai-feature flex flex-col sm:flex-row items-center gap-4 sm:gap-6 md:gap-8 border hover:shadow-md border-[#E8E2D8] p-4 rounded-lg"
               >
                 <div className="dubai-feature-icon border rounded-full w-14 h-14 md:w-16 md:h-16 shrink-0 flex items-center justify-center bg-[#F4ECE1] text-xs font-semibold text-slate-700">
-                  icon
+                  {item.icon}
                 </div>
                 <div className="text-center sm:text-left">
                   <h3 className="dubai-feature-name font-semibold text-slate-900 text-base">

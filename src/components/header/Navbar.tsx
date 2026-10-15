@@ -100,47 +100,79 @@ const Navbar = () => {
         <ul className="hidden md:flex items-center md:text-xs lg:text-lg gap-8 lg:gap-10">
           <li>
             <Link
-              to="/properties"
-              className="nav-link hover:text-blue-600 transition-colors"
+              to="#/properties"
+              onClick={() => {
+                document
+                  .getElementById("properties")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="nav-link hover:text-black transition-colors cursor-pointer"
             >
               Properties
             </Link>
           </li>
           <li>
             <Link
-              to="/smart"
-              className="nav-link hover:text-blue-600 transition-colors"
+              to="#/smart"
+              className="nav-link hover:text-black transition-colors"
+              onClick={() => {
+                document
+                  .getElementById("ownership")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
             >
               Smart OwnerShip
             </Link>
           </li>
           <li>
             <Link
-              to="/why"
-              className="nav-link hover:text-blue-600 transition-colors"
+              to="#/dubai"
+              className="nav-link hover:text-black transition-colors"
+              onClick={() => {
+                document
+                  .getElementById("dubai")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
             >
               Why Dubai
             </Link>
           </li>
           <li>
             <Link
-              to="/about"
-              className="nav-link hover:text-blue-600 transition-colors"
+              to="#/about"
+              className="nav-link hover:text-black transition-colors"
+              onClick={() => {
+                document
+                  .getElementById("overview")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
             >
               About
             </Link>
           </li>
           <li>
             <Link
-              to="/faqs"
-              className="nav-link hover:text-blue-600 transition-colors"
+              to="#/faqs"
+              className="nav-link hover:text-black transition-colors"
+              onClick={() => {
+                document
+                  .getElementById("faqs")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
             >
               Faqs
             </Link>
           </li>
         </ul>
         <div className="hidden md:block nav-actions">
-          <button className="px-5 py-3 rounded-2xl bg-black text-white font-semibold hover:bg-blue-600 active:scale-95 transition-all duration-150 cursor-pointer">
+          <button
+            onClick={() => {
+              document
+                .getElementById("contact")
+                ?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="px-5 py-3 rounded-2xl bg-black text-white font-bold  active:scale-95 transition-all duration-150 cursor-pointer"
+          >
             Contact
           </button>
         </div>
@@ -153,43 +185,81 @@ const Navbar = () => {
         </button>
       </nav>
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 px-6 py-5 flex flex-col gap-4 shadow-lg animate-in fade-in slide-in-from-top-2 duration-200">
+        <div className="md:hidden bg-white text-gray-800 border-t border-gray-100 px-6 py-5 flex flex-col gap-4 shadow-lg animate-in fade-in slide-in-from-top-2 duration-200">
           <Link
-            to="/properties"
-            onClick={() => setIsOpen(false)}
-            className="text-base py-1 text-slate-700 hover:text-blue-600 font-medium"
+            to="#/properties"
+            onClick={() => {
+              setIsOpen(false);
+              document
+                .getElementById("properties")
+                ?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="nav-link text-gray-800 hover:text-black transition-colors cursor-pointer"
           >
             Properties
           </Link>
+
           <Link
-            to="/smart"
-            onClick={() => setIsOpen(false)}
-            className="text-base py-1 text-slate-700 hover:text-blue-600 font-medium"
+            to="#/smart"
+            onClick={() => {
+              setIsOpen(false);
+              document
+                .getElementById("ownership")
+                ?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="nav-link text-gray-800 hover:text-black transition-colors cursor-pointer"
           >
             Smart OwnerShip
           </Link>
+
           <Link
-            to="/why"
-            onClick={() => setIsOpen(false)}
-            className="text-base py-1 text-slate-700 hover:text-blue-600 font-medium"
+            to="#/dubai"
+            onClick={() => {
+              setIsOpen(false);
+              document
+                .getElementById("dubai")
+                ?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="nav-link text-gray-800 hover:text-black transition-colors cursor-pointer"
           >
             Why Dubai
           </Link>
+
           <Link
-            to="/about"
-            onClick={() => setIsOpen(false)}
-            className="text-base py-1 text-slate-700 hover:text-blue-600 font-medium"
+            to="#/about"
+            onClick={() => {
+              setIsOpen(false);
+              document
+                .getElementById("overview")
+                ?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="nav-link text-gray-800 hover:text-black transition-colors cursor-pointer"
           >
             About
           </Link>
+
           <Link
-            to="/faqs"
-            onClick={() => setIsOpen(false)}
-            className="text-base py-1 text-slate-700 hover:text-blue-600 font-semibold"
+            to="#/faqs"
+            onClick={() => {
+              setIsOpen(false);
+              document
+                .getElementById("faqs")
+                ?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="nav-link text-gray-800 hover:text-black transition-colors cursor-pointer"
           >
             Faqs
           </Link>
-          <button className="w-full mt-2 py-3 rounded-xl bg-black text-white font-semibold hover:bg-blue-600 active:scale-95 transition-all cursor-pointer">
+
+          <button
+            onClick={() => {
+              setIsOpen(false);
+              document
+                .getElementById("contact")
+                ?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="w-full mt-2 py-3 rounded-xl bg-black text-white font-semibold hover:bg-gray-800 active:scale-95 transition-all cursor-pointer"
+          >
             Contact
           </button>
         </div>

@@ -152,7 +152,7 @@ const Ownership = () => {
     },
   ];
   return (
-    <div ref={ownershipRef} className="w-full py-5 md:py-10 px-6 md:px-15">
+    <div id="ownership" ref={ownershipRef} className="w-full py-5 md:py-10 px-6 md:px-15">
       <div
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(${OwnerShip})`,

@@ -61,7 +61,7 @@ const CTA = () => {
             duration: 0.7,
             ease: "back.out(1.5)",
           },
-          "-=0.2",
+          "-=0.4",
         );
     },
     { scope: ctaRef },
@@ -70,7 +70,7 @@ const CTA = () => {
   return (
     <div ref={ctaRef} className="w-full px-6 py-10 md:px-15">
       <div
-        className="cta-background  cta-container rounded-3xl bg-cover bg-center bg-no-repeat min-h-100 sm:min-h-105 md:h-115 flex items-center p-6 sm:p-10 md:p-16 lg:p-20"
+        className="cta-background  cta-container rounded-3xl bg-cover bg-center bg-no-repeat min-h-100 sm:min-h-105 md:min-h-115 flex items-center p-6 sm:p-10 md:p-16 lg:p-20"
         style={{
           backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 45%, rgba(0,0,0,0) 100%), url(${sunset})`,
         }}
@@ -88,7 +88,7 @@ const CTA = () => {
             Get in touch with our team and take the first step towards owning
             your dream property.
           </p>
-          <button className="cta-button group mt-2 md:mt-4 px-6 md:px-7 py-3 md:py-3.5 bg-white text-neutral-900 rounded-full font-medium text-sm md:text-base flex items-center gap-3 w-fit shadow-md hover:bg-gray-100 active:scale-95 transition cursor-pointer">
+          <button className="cta-button group mt-2 md:mt-4 px-6 md:px-7 py-3 md:py-3.5 bg-white text-neutral-900 rounded-full font-medium text-sm md:text-base flex items-center gap-3 w-fit shadow-md hover:bg-gray-100 active:scale-95 transition-colors cursor-pointer">
             Contact Us
             <span className="inline-block text-lg transition-transform duration-300 group-hover:translate-x-1">
               →

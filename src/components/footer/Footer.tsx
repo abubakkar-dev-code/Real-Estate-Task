@@ -128,7 +128,7 @@ const Footer = () => {
   ];
 
   return (
-    <div ref={footerRef} className="w-full px-6 py-10 md:px-15">
+    <div id="contact" ref={footerRef} className="w-full px-6 py-10 md:px-15">
       <div className="footer-card bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
           <div className="footer-logo flex flex-col">

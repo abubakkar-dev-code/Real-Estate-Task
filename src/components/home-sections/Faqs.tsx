@@ -116,7 +116,7 @@ const Faqs = () => {
   ]);
 
   return (
-    <div ref={faqRef} className="w-full px-4 py-8 sm:px-6 sm:py-10 md:px-15">
+    <div id="faqs" ref={faqRef} className="w-full px-4 py-8 sm:px-6 sm:py-10 md:px-15">
       <div className="bg-white shadow-md rounded-xl overflow-hidden flex flex-col md:flex-row gap-0">
         <div
           className="

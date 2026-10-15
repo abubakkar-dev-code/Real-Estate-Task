@@ -106,7 +106,7 @@ const OverView = () => {
     { scope: overViewRef },
   );
   return (
-    <section ref={overViewRef} className="w-full py-10 px-6 md:px-15">
+    <section id="overview" ref={overViewRef} className="w-full py-10 px-6 md:px-15">
       <div className="bg-[#FAF8F5] border border-[#EFECE6] rounded-3xl p-8 md:p-12 lg:p-14 shadow-sm">
         <div className="overview-content flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 pb-10 border-b border-[#E8E2D8]">
           <div className="max-w-xl">
