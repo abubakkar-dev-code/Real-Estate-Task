@@ -122,19 +122,17 @@ const Hero = () => {
   return (
     <div id="hero-section" ref={heroRef} className="relative overflow-hidden h-screen isolate">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 z-10 flex items-center justify-center">
-          <div className="relative w-full aspect-square">
-            <img
-              src={houseHalf}
-              alt="Half constructed house"
-              className="house-half absolute inset-0 w-full h-full  object-contain"
-            />
-            <img
-              src={houseFull}
-              alt="Completed house"
-              className="house-full absolute inset-0 w-full h-full object-contain"
-            />
-          </div>
+        <div className="absolute inset-0 z-10">
+          <img
+            src={houseHalf}
+            alt="Half constructed house"
+            className="house-half absolute inset-0 w-full h-full object-cover object-center"
+          />
+          <img
+            src={houseFull}
+            alt="Completed house"
+            className="house-full absolute inset-0 w-full h-full object-cover object-center"
+          />
         </div>
         <div className="absolute inset-0 z-20 bg-black/30" />
         <div className="hero-caption absolute z-30 bottom-10 md:bottom-14 left-0 w-full px-6 md:px-15 opacity-0">
