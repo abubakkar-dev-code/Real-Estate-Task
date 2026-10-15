@@ -86,6 +86,25 @@ const WhyDubai = () => {
           },
           "-=0.3",
         );
+      const image = document.querySelector(".dubai-image") as HTMLElement;
+      const wrapper = image.parentElement;
+      if (image && wrapper) {
+        wrapper.addEventListener("mouseenter", () => {
+          gsap.to(image, {
+            scale: 1.08,
+            duration: 0.8,
+            ease: "power3.out",
+          });
+        });
+
+        wrapper.addEventListener("mouseleave", () => {
+          gsap.to(image, {
+            scale: 1,
+            duration: 0.8,
+            ease: "power3.out",
+          });
+        });
+      }
     },
     { scope: containerRef },
   );
@@ -114,7 +133,7 @@ const WhyDubai = () => {
   return (
     <div ref={containerRef} className="w-full px-6 py-10 md:px-15 sm:w-full">
       <div className="bg-white shadow-md rounded-xl overflow-hidden flex flex-col md:flex-row gap-6 md:gap-12">
-        <div className="w-full md:w-1/2 md:flex-[50%]">
+        <div className="conatiner-img w-full md:w-1/2 md:flex-[50%]">
           <img
             className="dubai-image w-full h-64 sm:h-80 md:h-full object-cover rounded-t-xl md:rounded-l-xl md:rounded-tr-none"
             src={dubaiImage}

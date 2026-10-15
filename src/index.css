@@ -7,4 +7,5 @@ body {
   font-family: "sans-serif", sans-serif;
   background-color: #f8fafc;
   color: #0f172a;
+  overflow-x: clip;
 }

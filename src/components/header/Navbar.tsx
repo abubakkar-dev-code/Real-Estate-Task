@@ -53,11 +53,39 @@ const Navbar = () => {
           },
           "-=0.3",
         );
+
+      ScrollTrigger.create({
+        trigger: "#hero-section",
+        start: "top top",
+        end: "+=1000",
+        onLeave: () => {
+          gsap.to(".nav-link", {
+            opacity: 0,
+            y: -15,
+            stagger: 0.05,
+            duration: 0.3,
+            pointerEvents: "none",
+          });
+        },
+        onEnterBack: () => {
+          gsap.to(".nav-link", {
+            opacity: 1,
+            y: 0,
+            stagger: 0.05,
+            duration: 0.3,
+            pointerEvents: "auto",
+          });
+        },
+      });
     },
     { scope: navRef },
   );
+
   return (
-    <div ref={navRef} className="w-full bg-white  shadow-sm sticky top-0 z-50">
+    <div
+      ref={navRef}
+      className="w-full bg-transparent text-white  shadow-sm fixed top-0 inset-x-0 left-0 z-50"
+    >
       <nav className="py-4 px-6 md:px-15 flex w-full justify-between items-center">
         <div>
           <Link to="/" onClick={() => setIsOpen(false)}>

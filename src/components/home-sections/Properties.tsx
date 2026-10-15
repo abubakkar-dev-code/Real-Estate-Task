@@ -83,6 +83,33 @@ const Properties = () => {
           },
           "-=0.5",
         );
+
+      const images = gsap.utils.toArray<HTMLImageElement>(".container-img img");
+
+      images.forEach((img) => {
+        const wrapper = img.parentElement;
+
+        if (!wrapper) return;
+
+        const enter = () => {
+          gsap.to(img, {
+            scale: 1.08,
+            duration: 0.8,
+            ease: "power3.out",
+          });
+        };
+
+        const leave = () => {
+          gsap.to(img, {
+            scale: 1,
+            duration: 0.8,
+            ease: "power3.out",
+          });
+        };
+
+        wrapper.addEventListener("mouseenter", enter);
+        wrapper.addEventListener("mouseleave", leave);
+      });
     },
     { scope: propertyRef },
   );
@@ -134,7 +161,7 @@ const Properties = () => {
               return (
                 <div
                   key={image.name}
-                  className="property-card relative h-64 overflow-hidden rounded-xl transform-gpu will-change-transform"
+                  className="container-img property-card relative h-64 overflow-hidden rounded-xl transform-gpu will-change-transform"
                 >
                   <img
                     src={image.img}

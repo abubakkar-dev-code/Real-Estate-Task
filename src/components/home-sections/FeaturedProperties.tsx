@@ -65,6 +65,30 @@ const FeaturedProperties = () => {
           },
           "-=0.8",
         );
+      const images = gsap.utils.toArray<HTMLImageElement>(
+        ".featured-image img",
+      );
+      images.forEach((img) => {
+        const wrapper = img.parentElement;
+        const enter = () => {
+          gsap.to(img, {
+            scale: 1.08,
+            duration: 0.8,
+            ease: "power3.out",
+          });
+        };
+        const leave = () => {
+          gsap.to(img, {
+            scale: 1,
+            duration: 0.8,
+            ease: "power3.out",
+          });
+        };
+        if (wrapper) {
+          wrapper.addEventListener("mouseenter", enter);
+          wrapper.addEventListener("mouseleave", leave);
+        }
+      });
     },
     { scope: featuredRef },
   );
@@ -89,7 +113,7 @@ const FeaturedProperties = () => {
           </button>
         </div>
         <div className="w-full lg:flex-[54%] py-8 lg:py-18 px-6 md:px-15 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-          <div className="featured-main-image overflow-hidden">
+          <div className="featured-image featured-main-image overflow-hidden group">
             <img
               src={luxuryVilla}
               alt="luxury-villa"
@@ -97,14 +121,14 @@ const FeaturedProperties = () => {
             />
           </div>
           <div className="flex flex-col gap-6 md:gap-10">
-            <div className="featured-small-image overflow-hidden">
+            <div className="featured-image featured-small-image overflow-hidden">
               <img
                 className="w-full h-52 sm:h-64 object-cover rounded-lg"
                 src={apartment}
                 alt="apartment-img"
               />
             </div>
-            <div className="featured-small-image overflow-hidden">
+            <div className="featured-image featured-small-image overflow-hidden">
               <img
                 className="w-full h-52 sm:h-64 object-cover rounded-lg"
                 src={beachfront}

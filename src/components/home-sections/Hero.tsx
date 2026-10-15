@@ -120,7 +120,7 @@ const Hero = () => {
     { scope: heroRef },
   );
   return (
-    <div ref={heroRef} className="relative overflow-hidden h-screen isolate">
+    <div id="hero-section" ref={heroRef} className="relative overflow-hidden h-screen isolate">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 z-10 flex items-center justify-center">
           <div className="relative w-full aspect-square">
